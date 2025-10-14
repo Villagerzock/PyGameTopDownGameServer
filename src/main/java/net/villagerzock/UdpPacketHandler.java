@@ -1,3 +1,5 @@
+package net.villagerzock;
+
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
@@ -10,5 +12,5 @@ public interface UdpPacketHandler {
      * @param remote     Absender (Adresse+Port)
      * @param socket     Server-Socket, falls eine Antwort gesendet werden soll
      */
-    void handle(byte packetId, ByteBuffer payload, InetSocketAddress remote, DatagramSocket socket) throws IOException;
+    void handle(byte packetId, PacketByteBuffer payload, InetSocketAddress remote, DatagramSocket socket) throws IOException;
 }

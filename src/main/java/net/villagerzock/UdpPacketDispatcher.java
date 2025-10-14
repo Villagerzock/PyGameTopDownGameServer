@@ -1,3 +1,5 @@
+package net.villagerzock;
+
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
@@ -27,8 +29,7 @@ public class UdpPacketDispatcher {
         byte packetId = data[offset];
         int payloadOffset = offset + 1;
         int payloadLength = Math.max(0, length - 1);
-
-        ByteBuffer payload = ByteBuffer.wrap(data, payloadOffset, payloadLength).slice();
+        PacketByteBuffer payload = new PacketByteBuffer(ByteBuffer.wrap(data, payloadOffset, payloadLength).slice());
         UdpPacketHandler h = handlers.get(packetId & 0xFF);
         if (h == null) h = defaultHandler;
         h.handle(packetId, payload, remote, socket);
