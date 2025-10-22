@@ -204,6 +204,6 @@ public abstract class AbstractAnimatedEntity implements AnimatedEntity {
 
     @Override
     public final Rect getBounds() {
-        return new Rect(this.position.x,this.position.y,this.getSize().x,this.getSize().y);
+        return new Rect(getPosition().x,getPosition().y,this.getSize().x,this.getSize().y);
     }
 }
